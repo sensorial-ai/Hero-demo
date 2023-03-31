@@ -9,6 +9,7 @@
     <title>ChatBot | ConnectMe | Chat Application HTML Template</title>
     <link rel="stylesheet" href="./assets/css/bundle.css?v100">
     <link rel="stylesheet" href="./assets/css/app.css?v100">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 
 <body class="tyn-body">
@@ -53,8 +54,8 @@
                                 <span class="d-none">ChatBot</span>
                             </a>
                         </li><!-- .tyn-appbar-item -->
-                        <li class="tyn-appbar-item d-none d-sm-inline-flex">
-                            <a class="tyn-appbar-link position-relative" href="chat-bot-s2.html">
+                        <li class="tyn-appbar-item d-none d-sm-inline-flex active">
+                            <a class="tyn-appbar-link position-relative active" href="chat-bot-s2.html">
                                 <!-- person-bounding-box -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
                                     <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
@@ -639,10 +640,13 @@
                         </button>
                     </li>
                 </ul>
-                <div class="tyn-chat-body my-4 px-4" data-simplebar>
+                <div id="simplebar-content" class="tyn-chat-body my-4 px-4" data-simplebar>
                     <div class="container px-0">
-                        <div class="tyn-qa tyn-qa-bubbly">
-                            <div class="tyn-qa-item">
+                        <div id="tynReply" class="tyn-qa tyn-qa-bubbly">
+                            <div id="loading" class="text-center py-4 d-none" style="position: fixed; bottom: 10%; width: 70%; z-index: 99999;">
+                                <i class="fa fa-spinner fa-pulse fa-3x"></i>
+                            </div>
+                            <div class="tyn-qa-item" style="display: none;">
                                 <div class="tyn-qa-avatar">
                                     <div class="tyn-media tyn-size-md">
                                         <img src="images/avatar/1.jpg" alt="">
@@ -650,7 +654,7 @@
                                 </div>
                                 <div class="tyn-qa-message tyn-text-block"> what can you do for me ? </div><!-- .tyn-qa-message -->
                             </div><!-- .tyn-qa-item -->
-                            <div class="tyn-qa-item">
+                            <div class="tyn-qa-item" style="display: none;">
                                 <div class="tyn-qa-avatar">
                                     <div class="tyn-qa-avatar-wrap">
                                         <div class="tyn-media tyn-size-md">
@@ -689,7 +693,7 @@
                                     <p>Overall, my goal is to assist you in any way that I can using my knowledge and abilities as an AI language model.</p>
                                 </div><!-- .tyn-qa-message -->
                             </div><!-- .tyn-qa-item -->
-                            <div class="tyn-qa-item">
+                            <div class="tyn-qa-item" style="display: none;">
                                 <div class="tyn-qa-avatar">
                                     <div class="tyn-media tyn-size-md">
                                         <img src="images/avatar/1.jpg" alt="">
@@ -697,7 +701,7 @@
                                 </div>
                                 <div class="tyn-qa-message tyn-text-block"> ok, write me short joke for web development tutorial starting. </div><!-- .tyn-qa-message -->
                             </div><!-- .tyn-qa-item -->
-                            <div class="tyn-qa-item">
+                            <div class="tyn-qa-item" style="display: none;">
                                 <div class="tyn-qa-avatar">
                                     <div class="tyn-qa-avatar-wrap">
                                         <div class="tyn-media tyn-size-md">
@@ -728,7 +732,7 @@
                                     <p>Why was the web developer always cold? <br> Because he left his Windows open!</p>
                                 </div><!-- .tyn-qa-message -->
                             </div><!-- .tyn-qa-item -->
-                            <div class="tyn-qa-item">
+                            <div class="tyn-qa-item" style="display: none;">
                                 <div class="tyn-qa-avatar">
                                     <div class="tyn-media tyn-size-md">
                                         <img src="images/avatar/1.jpg" alt="">
@@ -736,7 +740,7 @@
                                 </div>
                                 <div class="tyn-qa-message tyn-text-block"> Could you write a basic chapter 1 tutorial for JavaScript for me ? </div><!-- .tyn-qa-message -->
                             </div><!-- .tyn-qa-item -->
-                            <div class="tyn-qa-item">
+                            <div class="tyn-qa-item" style="display: none;">
                                 <div class="tyn-qa-avatar">
                                     <div class="tyn-qa-avatar-wrap">
                                         <div class="tyn-media tyn-size-md">
@@ -892,7 +896,7 @@ switch (fruit) {
                             <div class="tyn-chat-form-enter">
                                 <div class="tyn-chat-form-input" id="tynChatInput" placeholder="text" contenteditable></div>
                                 <ul class="tyn-list-inline me-n2 my-1">
-                                    <li><button class="btn btn-icon btn-white btn-md btn-pill">
+                                    <li><button id="btn-send" class="btn btn-icon btn-white btn-md btn-pill">
                                             <!-- send-fill -->
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
                                                 <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
@@ -908,6 +912,7 @@ switch (fruit) {
     </div>
     <script src="./assets/js/bundle.js?v100"></script>
     <script src="./assets/js/app.js?v100"></script>
+    <script src="./js/main-chat.js"></script>
 </body>
 
 </html>

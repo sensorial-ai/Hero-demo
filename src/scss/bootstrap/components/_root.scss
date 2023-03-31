@@ -16,11 +16,4 @@
 }
 
 
-@if $enable-dark-mode {
-    @include color-mode(dark, true) {
-        @each $color, $value in $grays-dark {
-            --#{$prefix}gray-#{$color}: #{$value};
-        }
-    }
-  }
   
