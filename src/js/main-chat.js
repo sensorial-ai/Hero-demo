@@ -1,7 +1,7 @@
 const fun = (() => {
     const tynChatInput = document.getElementById('tynChatInput');
     const btnSend = document.getElementById('btn-send');
-    const botUrl = "http://104.198.237.233/chat/";
+    const botUrl = "http://104.198.237.233/chat/"; 
     const tynReply = document.getElementById('tynReply');
     const loading = document.getElementById('loading');
     const tynChatBody = document.getElementsByClassName('simplebar-content-wrapper')
