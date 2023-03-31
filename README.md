@@ -1,2 +1,2 @@
 # Hero-demo
-Demostracion de chat hero
+Demostracion de respuestas de chatgpt
